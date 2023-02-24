@@ -1,0 +1,60 @@
+#include <SoftwareSerial.h>
+#include <AFMotor.h>
+
+// 0 - WHITE, 1 - BLACK
+// motor : 2 - left, 1 - right
+// sensor : a0(val1) - left, a5(val2) - right
+// motor_L speed :105 ,motor_R spedd:85
+int left_val,right_val;
+AF_DCMotor motor_L(2);
+AF_DCMotor motor_R(1);
+
+void setup() {
+  motor_L.setSpeed(150);
+  motor_L.run(RELEASE);
+  motor_R.setSpeed(120);
+  motor_R.run(RELEASE);
+//  Serial.begin(9600);
+//  pinMode(A0, INPUT);
+//  pinMode(A5, INPUT);
+}
+
+void loop() {
+  left_val=digitalRead(A0); 
+  right_val=digitalRead(A5);
+
+//  Serial.print(val1);
+//  Serial.println(val2);
+//  delay(1000);
+
+  
+  if (left_val == 0 && right_val == 0){
+      motor_L.run(FORWARD);
+      motor_R.run(FORWARD);
+  }
+
+
+  // RIGHT CURVE
+  else if (left_val == 0 && right_val == 1){
+      motor_L.run(FORWARD);
+      motor_R.run(BACKWARD);
+      //motor_R.run(RELEASE); 
+  }
+
+  // LEFT CURVE
+  else if (left_val == 1 && right_val == 0){
+      motor_L.run(BACKWARD);
+      //motor_L.run(RELEASE);
+      motor_R.run(FORWARD);
+  }
+
+  /*
+  else if (left_val == 1 && right_val == 1){
+      motor_L.run(RELEASE);
+      motor_R.run(RELEASE);
+     // delay(200);
+  }*/
+
+  
+ 
+}
