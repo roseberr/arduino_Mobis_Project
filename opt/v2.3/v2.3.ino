@@ -99,9 +99,9 @@ void setup() {
 
   // turn on motor
 
-  setSpeed(leftMotorNum,240);
+  setSpeed(leftMotorNum,210);
   run(leftMotorNum,RELEASE);
-  setSpeed(rightMotorNum,180);
+  setSpeed(rightMotorNum,170);
   run(rightMotorNum,RELEASE);
   
   //motor_L.setSpeed(230);              // 왼쪽 모터의 속도   
@@ -109,7 +109,6 @@ void setup() {
   //motor_R.setSpeed(230);              // 오른쪽 모터의 속도   
   //motor_R.run(RELEASE);
 }
-
 void loop() {
     int val1 = digitalRead(A0);    // 라인센서1
     int val2 = digitalRead(A5);    // 라인센서2   
@@ -118,24 +117,24 @@ void loop() {
        //motor_L.run(FORWARD); 
        //motor_R.run(FORWARD);
        
-        setSpeed(leftMotorNum,240);
-        setSpeed(rightMotorNum,180);
+        setSpeed(leftMotorNum,210);
+        setSpeed(rightMotorNum,170);
         run(leftMotorNum , FORWARD);
         run(rightMotorNum , FORWARD);
       }
       else if (val1 == 0 && val2 == 1) {              // 우회전
        //motor_L.run(FORWARD); 
        //motor_R.run(RELEASE);
-        setSpeed(leftMotorNum,170);
-        setSpeed(rightMotorNum,200);
+        setSpeed(leftMotorNum,125);
+        setSpeed(rightMotorNum,150);
         run(leftMotorNum , FORWARD);
         run(rightMotorNum , BACKWARD);
       }
       else if (val1 == 1 && val2 == 0) {              // 좌회전
         //motor_L.run(RELEASE); 
         //motor_R.run(FORWARD);
-        setSpeed(leftMotorNum,200);
-        setSpeed(rightMotorNum,170);
+        setSpeed(leftMotorNum,150);
+        setSpeed(rightMotorNum,125);
         run(leftMotorNum,BACKWARD);
         run(rightMotorNum , FORWARD);
       } 
