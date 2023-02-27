@@ -187,9 +187,9 @@ void setup() {
   motorConstruct();
 
   // turn on motor
-  setSpeed(leftMotorNum,200);
+  setSpeed(leftMotorNum,230);
   run(leftMotorNum,RELEASE);
-  setSpeed(rightMotorNum,150);
+  setSpeed(rightMotorNum,180);
   run(rightMotorNum,RELEASE);
 
   //motor_L.setSpeed(230);               
@@ -209,8 +209,6 @@ void setup() {
 
 
 void loop() {
-
-    
     if (start){
       showmatrix(smile);
       delay(700);
@@ -223,21 +221,21 @@ void loop() {
     Serial.print(val1);
     Serial.println(val2);
     int ir_val = analogRead(IRSensor);
-    delay(100);
+    //delay(100);
     //Serial.println(ir_val);
       // ir sensor
       if (ir_val < 80){
          showmatrix(x);
          run(leftMotorNum , FORWARD);
          run(rightMotorNum , BACKWARD);
-         delay(250); 
+         delay(200); 
          run(rightMotorNum , FORWARD);
-         delay(800);
+         delay(700);
          run(leftMotorNum , BACKWARD);
-         delay(500);
+         delay(400);
          run(leftMotorNum , FORWARD);
          run(rightMotorNum , FORWARD);
-         //delay(300); // hard coding
+         
         while(true) {
           val1=digitalRead(A0); 
           val2=digitalRead(A5);
@@ -254,8 +252,8 @@ void loop() {
     
       // go forward
       if (val1 == 0 && val2 == 0) {                   
-        setSpeed(leftMotorNum,200);
-        setSpeed(rightMotorNum,150);
+        setSpeed(leftMotorNum,230);
+        setSpeed(rightMotorNum,180);
         run(leftMotorNum , FORWARD);
         run(rightMotorNum , FORWARD);
         showmatrix(forward);
@@ -263,8 +261,8 @@ void loop() {
 
       // right_curve
       else if (val1 == 0 && val2 == 1) {              
-        setSpeed(leftMotorNum,150);
-        setSpeed(rightMotorNum,170);
+        setSpeed(leftMotorNum,180);
+        setSpeed(rightMotorNum,200);
         run(leftMotorNum , FORWARD);
         run(rightMotorNum , BACKWARD);
         showmatrix(right_curve);
@@ -272,8 +270,8 @@ void loop() {
 
       // left_curve
       else if (val1 == 1 && val2 == 0) {              
-        setSpeed(leftMotorNum,170);
-        setSpeed(rightMotorNum,150);
+        setSpeed(leftMotorNum,200);
+        setSpeed(rightMotorNum,180);
         run(leftMotorNum,BACKWARD);
         run(rightMotorNum , FORWARD);
         showmatrix(left_curve);
